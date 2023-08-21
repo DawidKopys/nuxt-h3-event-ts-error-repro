@@ -4,14 +4,23 @@
 2. Run `npm i` in `app` directory
 3. Run `npx nuxi typecheck` / `npm run dev` / `npx vue-tsc --noEmit` inside `app` directory.
 
-You should see below error:
+You should see below errors:
 ```
-Nuxi 3.6.5                                                                                            4:35:26 PM
-../nuxt-layer/app.config.ts:7:16 - error TS2664: Invalid module name in augmentation, module '@nuxt/schema' cannot be found.
+../nuxt-layer/server/api/foo.ts:7:13 - error TS2345: Argument of type 'H3Event' is not assignable to parameter of type 'H3Event<EventHandlerRequest>'.
 
-7 declare module '@nuxt/schema' {
-                 ~~~~~~~~~~~~~~
+7   setCookie(event, 'someCookieName', 'someCookieValue')
+              ~~~~~
+
+../nuxt-layer/server/utils/someUtil.ts:6:13 - error TS2345: Argument of type 'H3Event' is not assignable to parameter of type 'H3Event<EventHandlerRequest>'.
+  Type 'H3Event' is missing the following properties from type 'H3Event<EventHandlerRequest>': method, headers, toJSON, fetch, $fetch
+
+6   setCookie(event, 'someCookieName', 'someCookieValue')
+              ~~~~~
 
 
-Found 1 error in ../nuxt-layer/app.config.ts:7
+Found 2 errors in 2 files.
+
+Errors  Files
+     1  ../nuxt-layer/server/api/foo.ts:7
+     1  ../nuxt-layer/server/utils/someUtil.ts:6
 ```
